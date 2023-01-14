@@ -60,6 +60,7 @@ import { networkDebugSystem } from "../bit-systems/network-debug";
 import qsTruthy from "../utils/qs_truthy";
 import { waypointSystem } from "../bit-systems/waypoint";
 import { objectSpawnerSystem } from "../bit-systems/object-spawner";
+import { pdfSystem } from "../bit-systems/pdf-system";
 
 declare global {
   interface Window {
@@ -227,6 +228,7 @@ export function mainTick(xrFrame: XRFrame, renderer: WebGLRenderer, scene: Scene
   objectMenuSystem(world, sceneEl.is("frozen"), aframeSystems.userinput, APP.hubChannel!);
   videoMenuSystem(world, aframeSystems.userinput);
   videoSystem(world, hubsSystems.audioSystem);
+  pdfSystem(world);
   mediaFramesSystem(world);
   hubsSystems.audioZonesSystem.tick(hubsSystems.el);
   hubsSystems.gainSystem.tick();

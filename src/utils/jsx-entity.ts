@@ -64,6 +64,7 @@ import { DirectionalLightParams, inflateDirectionalLight } from "../inflators/di
 import { ProjectionMode } from "./projection-mode";
 import { inflateSkybox, SkyboxParams } from "../inflators/skybox";
 import { inflateSpawner, SpawnerParams } from "../inflators/spawner";
+import { inflatePDF, PDFParams } from "../inflators/pdf";
 
 preload(
   new Promise(resolve => {
@@ -301,6 +302,7 @@ export interface JSXComponentData extends ComponentData {
   model?: ModelParams;
   networkDebug?: boolean;
   waypointPreview?: boolean;
+  pdf?: PDFParams;
 }
 
 export interface GLTFComponentData extends ComponentData {
@@ -373,6 +375,7 @@ const jsxInflators: Required<{ [K in keyof JSXComponentData]: InflatorFn }> = {
   sceneLoader: createDefaultInflator(SceneLoader),
   networkDebug: createDefaultInflator(NetworkDebug),
   waypointPreview: createDefaultInflator(WaypointPreview),
+  pdf: inflatePDF,
   mediaLoader: inflateMediaLoader,
 
   // inflators that create Object3Ds
