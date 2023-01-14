@@ -1,7 +1,7 @@
 import { addComponent, defineQuery, enterQuery, exitQuery, hasComponent, removeComponent, removeEntity } from "bitecs";
 import { Vector3 } from "three";
 import { HubsWorld } from "../app";
-import { GLTFModel, MediaLoader, Networked, ObjectMenuTarget } from "../bit-components";
+import { GLTFModel, MediaLoader, MediaPDF, Networked, ObjectMenuTarget, PDFMenuTarget } from "../bit-components";
 import { ErrorObject } from "../prefabs/error-object";
 import { LoadingObject } from "../prefabs/loading-object";
 import { animate } from "../utils/animate";
@@ -154,6 +154,9 @@ function* loadAndAnimateMedia(world: HubsWorld, eid: EntityID, signal: AbortSign
     resizeAndRecenter(world, media, eid);
     if (MediaLoader.flags[eid] & MEDIA_LOADER_FLAGS.IS_OBJECT_MENU_TARGET) {
       addComponent(world, ObjectMenuTarget, eid);
+    }
+    if (hasComponent(world, MediaPDF, media)) {
+      addComponent(world, PDFMenuTarget, eid);
     }
     add(world, media, eid);
     setNetworkedDataWithoutRoot(world, APP.getString(Networked.id[eid])!, media);

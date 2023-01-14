@@ -43,13 +43,15 @@ async function loadPage(world: HubsWorld, eid: EntityID, component: PDFComponent
   material.map = component.texture;
   material.map!.needsUpdate = true;
   material.needsUpdate = true;
-
-  // We sleep because the loading animation in media loader
-  // might still be controlling this object's scale.
-  // TODO: Fix this. (This is obviously the wrong solution.)
-  await sleep(400);
   scaleMeshToAspectRatio(mesh, ratio);
   component.isLoading = false;
+
+  // The loading animation in media loader
+  // might still be controlling this object's scale,
+  // so set the size again.
+  // TODO Fix
+  await sleep(400);
+  scaleMeshToAspectRatio(mesh, ratio);
 }
 
 const pdfQuery = defineQuery([MediaPDF, NetworkedPDF]);

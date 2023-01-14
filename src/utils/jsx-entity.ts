@@ -4,6 +4,7 @@ import {
   $isStringType,
   CameraTool,
   ObjectMenu,
+  PDFMenu,
   CursorRaycastable,
   DestroyAtExtremeDistance,
   FloatyObject,
@@ -278,6 +279,10 @@ export interface JSXComponentData extends ComponentData {
     mirrorButtonRef: Ref;
     scaleButtonRef: Ref;
   };
+  pdfMenu?: {
+    prevButtonRef: Ref;
+    nextButtonRef: Ref;
+  };
   cameraTool?: {
     snapMenuRef: Ref;
     nextButtonRef: Ref;
@@ -366,6 +371,7 @@ const jsxInflators: Required<{ [K in keyof JSXComponentData]: InflatorFn }> = {
   networkedTransform: createDefaultInflator(NetworkedTransform),
   networked: createDefaultInflator(Networked),
   objectMenu: createDefaultInflator(ObjectMenu),
+  pdfMenu: createDefaultInflator(PDFMenu),
   cameraTool: createDefaultInflator(CameraTool, { captureDurIdx: 1 }),
   animationMixer: createDefaultInflator(AnimationMixer),
   networkedVideo: createDefaultInflator(NetworkedVideo),

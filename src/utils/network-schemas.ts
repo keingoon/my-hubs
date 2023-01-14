@@ -4,6 +4,7 @@ import {
   $isStringType,
   NetworkedFloatyObject,
   NetworkedMediaFrame,
+  NetworkedPDF,
   NetworkedTransform,
   NetworkedVideo,
   NetworkedWaypoint
@@ -42,6 +43,10 @@ schemas.set(NetworkedWaypoint, NetworkedWaypointSchema);
 schemas.set(NetworkedFloatyObject, {
   componentName: "networked-floaty-object",
   ...defineNetworkSchema(NetworkedFloatyObject)
+});
+schemas.set(NetworkedPDF, {
+  componentName: "networked-pdf",
+  ...defineNetworkSchema(NetworkedPDF)
 });
 
 export const networkableComponents = Array.from(schemas.keys());

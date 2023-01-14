@@ -183,7 +183,15 @@ export const ObjectMenu = defineComponent({
   scaleButtonRef: Types.eid,
   targetRef: Types.eid
 });
+// TODO: Store this data elsewhere, since only one or two will ever exist.
+export const PDFMenu = defineComponent({
+  prevButtonRef: Types.eid,
+  nextButtonRef: Types.eid,
+  targetRef: Types.eid,
+  clearTargetTimer: Types.f64
+});
 export const ObjectMenuTarget = defineComponent();
+export const PDFMenuTarget = defineComponent();
 export const NetworkDebug = defineComponent();
 export const NetworkDebugRef = defineComponent({
   ref: Types.eid
