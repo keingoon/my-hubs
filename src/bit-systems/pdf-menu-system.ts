@@ -1,6 +1,6 @@
 import { defineQuery, entityExists, hasComponent } from "bitecs";
 import type { HubsWorld } from "../app";
-import { HoveredRemoteRight, Interacted, MediaPDF, NetworkedPDF, PDFMenu, PDFMenuTarget } from "../bit-components";
+import { HoveredRemoteRight, Interacted, MediaPDF, NetworkedPDF, PDFMenu } from "../bit-components";
 import { anyEntityWith, findAncestorWithComponent } from "../utils/bit-utils";
 import type { EntityID } from "../utils/networking-types";
 import { takeOwnership } from "../utils/take-ownership";
@@ -19,7 +19,7 @@ function findPDFMenuTarget(world: HubsWorld, menu: EntityID, sceneIsFrozen: bool
   }
 
   const hovered = hoveredQuery(world);
-  const target = hovered.find(eid => findAncestorWithComponent(world, PDFMenuTarget, eid));
+  const target = hovered.find(eid => findAncestorWithComponent(world, MediaPDF, eid));
   if (target) {
     PDFMenu.targetRef[menu] = target;
     PDFMenu.clearTargetTimer[menu] = world.time.elapsed + 1000;

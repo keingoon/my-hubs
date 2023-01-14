@@ -2,7 +2,7 @@ import { addComponent, Types } from "bitecs";
 import { PDFDocumentProxy } from "pdfjs-dist";
 import { CanvasTexture, DoubleSide, LinearFilter, Mesh, sRGBEncoding } from "three";
 import { HubsWorld } from "../app";
-import { MediaPDF, NetworkedPDF } from "../bit-components";
+import { MediaPDF, Networked, NetworkedPDF } from "../bit-components";
 import { addObject3DComponent } from "../utils/jsx-entity";
 import { EntityID } from "../utils/networking-types";
 import { createPlaneBufferGeometry } from "../utils/three-utils";
@@ -39,6 +39,7 @@ export function inflatePDF(world: HubsWorld, eid: EntityID, params: PDFParams) {
     page: -1, // No page is loaded yet
     isLoading: false
   });
+  addComponent(world, Networked, eid);
   addComponent(world, NetworkedPDF, eid);
   NetworkedPDF.page[eid] = 1;
   return eid;

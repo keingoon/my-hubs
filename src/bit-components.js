@@ -191,7 +191,6 @@ export const PDFMenu = defineComponent({
   clearTargetTimer: Types.f64
 });
 export const ObjectMenuTarget = defineComponent();
-export const PDFMenuTarget = defineComponent();
 export const NetworkDebug = defineComponent();
 export const NetworkDebugRef = defineComponent({
   ref: Types.eid
