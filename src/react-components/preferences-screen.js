@@ -21,6 +21,7 @@ import {
   getScreenResolutionHeight,
   setMaxResolution
 } from "../utils/screen-orientation-utils";
+import { CAMERA_MODE_THIRD_PERSON_VIEW, CAMERA_MODE_FIRST_PERSON } from "../systems/camera-system";
 import { AAModes } from "../constants";
 
 import dropdownArrowUrl from "../assets/images/dropdown_arrow.png";
@@ -475,6 +476,10 @@ const preferenceLabels = defineMessages({
   enableDynamicShadows: {
     id: "preferences-screen.preference.enable-dynamic-shadows",
     defaultMessage: "Enable Real-time Shadows"
+  },
+  enableThirdPersonView: {
+    id: "preferences-screen.preference.enable-third-person-view",
+    defaultMessage: "Enable Third-Person View"
   },
   disableAutoPixelRatio: {
     id: "preferences-screen.preference.disable-auto-pixel-ratio",
@@ -1002,6 +1007,10 @@ class PreferencesScreen extends Component {
       this.state.canVoiceChat &&
         this.mediaDevicesManager.startMicShare({ updatePrefs: false }).then(this.updateMediaDevices);
     }
+    const { enableThirdPersonView } = this.props.store.state.preferences;
+    this.props.scene.systems["hubs-systems"].cameraSystem.setMode(
+      enableThirdPersonView ? CAMERA_MODE_THIRD_PERSON_VIEW : CAMERA_MODE_FIRST_PERSON
+    );
   }
 
   createSections() {
@@ -1350,6 +1359,11 @@ class PreferencesScreen extends Component {
           {
             key: "enableDynamicShadows",
             prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX
+          },
+          {
+            key: "enableThirdPersonView",
+            prefType: PREFERENCE_LIST_ITEM_TYPE.CHECK_BOX,
+            defaultBool: false
           },
           {
             key: "disableAutoPixelRatio",
