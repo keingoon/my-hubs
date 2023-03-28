@@ -1395,7 +1395,9 @@ class UIRoot extends Component {
                           onClick={() => this.toggleSidebar("people")}
                           presencecount={this.state.presenceCount}
                         />
-                        <CustomSwitchPersonViewButton store={this.props.store} scene={this.props.scene} />
+                        {showObjectList && (
+                          <CustomSwitchPersonViewButton store={this.props.store} scene={this.props.scene} />
+                        )}
                         {showECSObjectsMenuButton && (
                           <ECSDebugMenuButton
                             active={this.state.sidebarId === "ecs-debug"}
