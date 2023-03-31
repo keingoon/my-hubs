@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import className from "classnames";
+import styles from "../assets/stylesheets/custom-switch-person-view-button.scss";
+import { FormattedMessage } from "react-intl";
+import { ReactComponent as CubeIcon } from "./icons/Cube.svg";
 import { CAMERA_MODE_THIRD_PERSON_VIEW, CAMERA_MODE_FIRST_PERSON } from "../systems/camera-system";
 
 export class CustomSwitchPersonViewButton extends Component {
@@ -40,8 +44,13 @@ export class CustomSwitchPersonViewButton extends Component {
       store.update({ preferences: { [storeKey]: v } });
     };
     return (
-      <div>
+      <label className={className(styles.switchPersonViewBox)}>
+        <CubeIcon />
+        <span>
+          <FormattedMessage id="content-menu.custom-switch-person-view-button" defaultMessage="3人称視点切り替え" />
+        </span>
         <input
+          className={className(styles.switchPersonViewButton)}
           tabIndex="0"
           type="checkbox"
           checked={value}
@@ -49,7 +58,7 @@ export class CustomSwitchPersonViewButton extends Component {
             setValue(!value);
           }}
         />
-      </div>
+      </label>
     );
   }
 }

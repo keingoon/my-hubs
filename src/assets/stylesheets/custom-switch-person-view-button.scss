@@ -1,0 +1,32 @@
+@use "../../react-components/styles/theme.scss";
+@import 'shared';
+
+:local(.switch-person-view-box) {
+    display: flex;
+    flex-direction: row;
+    border: none;
+    border-radius: 8px;
+    background-color: theme.$transparent;
+    font-size: theme.$font-size-xs;
+    font-weight: theme.$font-weight-bold;
+    align-items: center;
+    padding: 8px 10px;
+
+    &>* {
+        margin-right: 8px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    &:hover {
+        background-color: theme.$button-bg-color-hover;
+    }
+
+    svg {
+        color: theme.$text1-color;
+    }
+}
+
+:local(.switch-person-view-button) {}
