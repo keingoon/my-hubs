@@ -1,0 +1,9 @@
+@use "../styles/theme.scss";
+
+:local(.banner-advertisement-box) {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 200px;
+    height: 80px;
+}
