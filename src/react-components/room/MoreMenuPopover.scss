@@ -118,4 +118,8 @@ button:local(.more-menu-item-target) {
   @media(min-width: theme.$breakpoint-lg) {
     display: none;
   }
+
+  @media(max-width: theme.$breakpoint-sm) {
+    top: 72px;
+  }
 }
