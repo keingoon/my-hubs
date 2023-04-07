@@ -12,6 +12,10 @@
   pointer-events: auto;
   padding: 4px;
 
+  @media(max-width: theme.$breakpoint-sm) {
+    flex-direction: column;
+  }
+
   @media(min-width: theme.$breakpoint-lg) {
     top: 24px;
     right: 24px;
@@ -29,7 +33,7 @@
   align-items: center;
   padding: 8px 10px;
 
-  & > * {
+  &>* {
     margin-right: 8px;
 
     &:last-child {
